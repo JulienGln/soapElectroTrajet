@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "temps_trajet_SOAP.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "temps_trajet_SOAP.py"
+      }
+    ]
+}
