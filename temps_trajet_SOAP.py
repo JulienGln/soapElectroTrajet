@@ -34,10 +34,13 @@ application = Application([TrajetService],
     out_protocol=Soap11()
 )
 
-if __name__ == '__main__':
-    from wsgiref.simple_server import make_server
-    wsgi_app = WsgiApplication(application)
-    wsgi_app_with_cors = CORSMiddleware(wsgi_app)
-    server = make_server('127.0.0.1', 8000, wsgi_app_with_cors)
-    # http://localhost:8000/?wsdl
-    server.serve_forever()
+wsgi_app = WsgiApplication(application)
+app = CORSMiddleware(wsgi_app)
+
+# if __name__ == '__main__':
+#     from wsgiref.simple_server import make_server
+#     wsgi_app = WsgiApplication(application)
+#     wsgi_app_with_cors = CORSMiddleware(wsgi_app)
+#     server = make_server('127.0.0.1', 8000, wsgi_app_with_cors)
+#     # http://localhost:8000/?wsdl
+#     server.serve_forever()
